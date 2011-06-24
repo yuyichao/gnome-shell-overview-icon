@@ -1,0 +1,7 @@
+{
+    "shell-version": ["3.0"],
+    "uuid": "overview-icon@yyc1992.gmail.com",
+    "name": "overview-icon",
+    "url": "https://github.com/yuyichao/gnome-shell-overview-icon",
+    "description": "Display an icon on each window in overview mode."
+}
