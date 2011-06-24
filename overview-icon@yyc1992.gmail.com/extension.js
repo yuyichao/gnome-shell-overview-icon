@@ -22,7 +22,9 @@
 const Shell = imports.gi.Shell;
 const Workspace = imports.ui.workspace;
 const Lang = imports.lang;
+
 let tracker = Shell.WindowTracker.get_default();
+let icon_size = 64;
 
 function injectToFunction(parent, name, func) {
     let origin = parent[name];
@@ -37,7 +39,7 @@ function injectToFunction(parent, name, func) {
 
 function addIcon(windowClone, parentActor) {
     let app = tracker.get_window_app(windowClone.metaWindow);
-    this._appicon = app.create_icon_texture(50);
+    this._appicon = app.create_icon_texture(icon_size);
     this._appicon.hide();
     parentActor.add_actor(this._appicon);
 }
