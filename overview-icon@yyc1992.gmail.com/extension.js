@@ -40,6 +40,7 @@ function injectToFunction(parent, name, func) {
 function addIcon(windowClone, parentActor) {
     let app = tracker.get_window_app(windowClone.metaWindow);
     this._appicon = app.create_icon_texture(icon_size);
+    this._appicon.set_size(icon_size, icon_size);
     this._appicon.hide();
     parentActor.add_actor(this._appicon);
 }
