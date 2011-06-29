@@ -62,7 +62,7 @@ function main() {
     injectToFunction(Workspace.WindowOverlay.prototype, 'show', function() {
         this._appicon.show();
     });
-    injectToFunction(Workspace.WindowOverlay.prototype, '_onDestory', function() {
-        this._appicon.destory();
+    injectToFunction(Workspace.WindowOverlay.prototype, '_onDestroy', function() {
+        this._appicon.destroy();
     });
 }
