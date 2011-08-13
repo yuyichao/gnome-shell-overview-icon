@@ -39,6 +39,10 @@ function injectToFunction(parent, name, func) {
 
 function addIcon(windowClone, parentActor) {
     let app = tracker.get_window_app(windowClone.metaWindow);
+    if (!app) {
+        global.log('Error :app is null.');
+        return;
+    }
     this._appicon = app.create_icon_texture(icon_size);
     this._appicon.set_size(icon_size, icon_size);
     this._appicon.hide();
@@ -46,6 +50,8 @@ function addIcon(windowClone, parentActor) {
 }
 
 function updatePositions(cloneX, cloneY, cloneWidth, cloneHeight) {
+    if (!this._appicon)
+        return;
     let iconX = cloneX + cloneWidth - this._appicon.get_width();
     let iconY = cloneY + cloneHeight - this._appicon.get_height();
     this._appicon.set_position(Math.floor(iconX), Math.floor(iconY));
@@ -57,12 +63,18 @@ function main() {
     injectToFunction(Workspace.WindowOverlay.prototype, '_init', addIcon);
     injectToFunction(Workspace.WindowOverlay.prototype, 'updatePositions', updatePositions);
     injectToFunction(Workspace.WindowOverlay.prototype, 'hide', function() {
+        if (!this._appicon)
+            return;
         this._appicon.hide();
     });
     injectToFunction(Workspace.WindowOverlay.prototype, 'show', function() {
+        if (!this._appicon)
+            return;
         this._appicon.show();
     });
     injectToFunction(Workspace.WindowOverlay.prototype, '_onDestroy', function() {
+        if (!this._appicon)
+            return;
         this._appicon.destroy();
     });
 }
