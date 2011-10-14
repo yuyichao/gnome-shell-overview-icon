@@ -1,5 +1,5 @@
 {
-    "shell-version": ["3.0"],
+    "shell-version": ["3.0", "3.2"],
     "uuid": "overview-icon@yyc1992.gmail.com",
     "name": "overview-icon",
     "url": "https://github.com/yuyichao/gnome-shell-overview-icon",

@@ -26,6 +26,8 @@ const Lang = imports.lang;
 let tracker = Shell.WindowTracker.get_default();
 let icon_size = 64;
 
+let active = false;
+
 function injectToFunction(parent, name, func) {
     let origin = parent[name];
     parent[name] = function() {
@@ -57,6 +59,18 @@ function updatePositions(cloneX, cloneY, cloneWidth, cloneHeight) {
     this._appicon.set_position(Math.floor(iconX), Math.floor(iconY));
     this._appicon.raise_top();
     this._appicon.show();
+}
+
+function init() {
+    main();
+}
+
+function enable() {
+    active = true;
+}
+
+function disable() {
+    active = false;
 }
 
 function main() {
