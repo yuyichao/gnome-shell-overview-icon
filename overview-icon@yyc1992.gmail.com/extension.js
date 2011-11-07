@@ -82,7 +82,7 @@ function main() {
         this._appicon.hide();
     });
     injectToFunction(Workspace.WindowOverlay.prototype, 'show', function() {
-        if (!this._appicon)
+        if (!this._appicon || !active)
             return;
         this._appicon.show();
     });
